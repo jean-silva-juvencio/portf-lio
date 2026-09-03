@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projetos — Jean Silva</title>
+<title>Jean Silva — Analista de Dados</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -15,16 +15,22 @@
     --ink-dim:#9fb3c8;
     --accent:#3fa9ff;
     --accent-soft:rgba(63,169,255,0.15);
-    --radius:12px;
+    --red:#e8543f;
+    --yellow:#e8b73f;
+    --blue:#3fa9ff;
+    --radius:10px;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+  html{scroll-behavior:smooth;}
   body{
     background:linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,#173f63 100%);
-    color:var(--ink);min-height:100vh;
-    scroll-behavior: smooth;
+    color:var(--ink);
+    min-height:100vh;
   }
+
   a{color:inherit;text-decoration:none;}
 
+  /* NAV */
   nav{
     position:fixed;top:0;left:0;width:100%;z-index:1000;
     background:rgba(2,14,31,0.85);
@@ -38,163 +44,170 @@
   }
   .nav-link{
     font-size:0.85rem;font-weight:600;letter-spacing:0.02em;
-    color:var(--ink-dim);padding:0.4rem 0;
+    color:var(--ink-dim);
+    padding:0.4rem 0;
     border-bottom:2px solid transparent;
     transition:color 0.2s ease, border-color 0.2s ease;
   }
   .nav-link:hover{color:var(--ink);border-color:var(--accent);}
-  .nav-link.active{color:var(--ink);border-color:var(--accent);}
-  .nav-contact{display:flex;gap:0.6rem;}
+  .nav-contact{
+    display:flex;gap:0.6rem;
+  }
   .nav-pill{
     display:flex;align-items:center;gap:0.45rem;
-    padding:0.45rem 0.9rem;border-radius:999px;
+    padding:0.45rem 0.9rem;
+    border-radius:999px;
     font-size:0.8rem;font-weight:600;
-    border:1px solid rgba(63,169,255,0.35);color:var(--ink);
+    border:1px solid rgba(63,169,255,0.35);
+    color:var(--ink);
     transition:background 0.2s ease, transform 0.2s ease;
   }
   .nav-pill:hover{background:var(--accent-soft);transform:translateY(-1px);}
+  .nav-pill i{font-size:0.9rem;}
 
-  .page{max-width:900px;margin:0 auto;padding:7rem 2rem 3rem;}
-  .page h1{font-size:2rem;font-weight:700;margin-bottom:0.6rem;}
-  .page > p{font-size:1rem;color:var(--ink-dim);max-width:65ch;margin-bottom:2.4rem;}
+  /* LAYOUT */
+  .page{
+    max-width:1180px;margin:0 auto;
+    padding:7rem 2rem 3rem;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:3rem;
+  }
 
-  /* Layout de cards um em baixo do outro (1 coluna) */
-  .grid{
-    display:flex;
-    flex-direction:column;
-    gap:2rem;
-  }
-  .card{
-    background:var(--bg-light);
-    border:1px solid rgba(63,169,255,0.18);
-    border-radius:var(--radius);
-    overflow:hidden;
-    display:flex;
-    flex-direction:row;
-    transition:transform 0.2s ease, border-color 0.2s ease;
-  }
-  @media(max-width: 768px){
-    .card{
-      flex-direction:column;
-    }
-  }
-  .card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(63,169,255,0.4);
-  }
-  .card-thumb{
-    width:380px;
-    min-height:240px;
+  /* SIDEBAR */
+  .avatar{
+    width:120px;height:120px;border-radius:50%;
+    margin:0 auto 1.2rem;
     background:linear-gradient(135deg,#1a3f61,#0f2740);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--ink-dim);font-size:2rem;
+    border:2px solid var(--accent);
+    box-shadow:0 0 24px rgba(63,169,255,0.35);
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .side-name{text-align:center;font-size:1.35rem;font-weight:700;}
+  .side-role{
+    text-align:center;font-size:0.85rem;color:var(--ink-dim);
+    margin-top:0.3rem;margin-bottom:1.3rem;line-height:1.4;
+  }
+  .side-bio{
+    font-size:0.85rem;color:var(--ink-dim);line-height:1.6;
+    text-align:center;margin-bottom:1.6rem;
+  }
+
+  @property --angle{
+    syntax:'<angle>';
+    initial-value:0deg;
+    inherits:false;
+  }
+
+  .projects-btn{
     position:relative;
-    cursor:pointer;
-    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;gap:0.6rem;
+    width:100%;padding:0.85rem 1rem;
+    border-radius:var(--radius);
+    background:var(--bg-light);
+    border:1px solid rgba(63,169,255,0.4);
+    color:var(--ink);font-weight:700;font-size:0.9rem;
+    margin-bottom:1.8rem;
+    transition:transform 0.2s ease;
   }
-  @media(max-width: 768px){
-    .card-thumb{
-      width:100%;
-      height:220px;
-    }
-  }
-  .card-thumb img{
-    width:100%;height:100%;object-fit:cover;
-  }
-  .card-thumb:hover::after{
-    content:"\f065";
-    font-family:"Font Awesome 6 Free";
-    font-weight:900;
+  .projects-btn:hover{transform:translateY(-2px);}
+  .projects-btn::before{
+    content:"";
     position:absolute;
     inset:0;
-    background:rgba(2,14,31,0.5);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--ink);
-    font-size:1.5rem;
+    border-radius:inherit;
+    padding:2px;
+    background:conic-gradient(from var(--angle), transparent 0%, var(--accent) 6%, #bfe4ff 10%, transparent 20%, transparent 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    animation:spin-light 2.6s linear infinite;
+    pointer-events:none;
   }
-  .card-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .card-body h3{font-size:1.25rem;font-weight:700;margin-bottom:0.6rem;}
-  .card-body p{font-size:0.92rem;color:var(--ink-dim);line-height:1.6;margin-bottom:0.8rem;}
-  .card-body p small{font-size:0.8rem;color:var(--ink-dim);display:block;margin-top:0.3rem;}
-  
-  .card-actions{
-    display:flex;gap:0.8rem;margin-top:1.2rem;
-  }
-  .btn-action{
-    display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
-    padding:0.6rem 1rem;border-radius:6px;
-    font-size:0.8rem;font-weight:600;
-    border:1px solid rgba(63,169,255,0.3);
-    color:var(--ink);background:rgba(63,169,255,0.05);
-    transition:background 0.2s ease;
-  }
-  .btn-action:hover{background:var(--accent-soft);}
-
-  /* Modal de Ampliação com Botão Fechar Fora/Canto Superior */
-  .modal-overlay{
-    display:none;
-    position:fixed;inset:0;z-index:2000;
-    background:rgba(2,14,31,0.92);
-    backdrop-filter:blur(8px);
-    justify-content:center;align-items:center;
-    padding:2rem;
-  }
-  .modal-overlay.active{
-    display:flex;
-  }
-  .modal-container{
-    position:relative;
-    max-width:90vw;
-    max-height:90vh;
-  }
-  .modal-img{
-    width:100%;
-    height:auto;
-    max-height:85vh;
-    object-fit:contain;
-    border-radius:8px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  }
-  .modal-close{
-    position:absolute;
-    top:-45px;
-    right:0;
-    background:rgba(255,255,255,0.1);
-    border:1px solid rgba(255,255,255,0.2);
-    color:var(--ink);
-    font-size:1.2rem;
-    width:36px;height:36px;
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;
-    transition:background 0.2s ease;
-  }
-  .modal-close:hover{
-    background:var(--accent);
-    border-color:var(--accent);
+  @keyframes spin-light{to{--angle:360deg;}}
+  @media (prefers-reduced-motion: reduce){
+    .projects-btn::before{animation:none;}
   }
 
-  /* Botões no final */
-  .btn-group-final{
-    display:flex;align-items:center;justify-content:center;
-    gap:2rem;margin-top:3rem;padding:0 2rem;
+  .skills{margin-top:0.5rem;}
+  .skills h3{
+    font-size:0.75rem;letter-spacing:0.06em;color:var(--ink-dim);
+    margin-bottom:0.9rem;font-weight:600;
   }
-  .btn-final{
-    display:flex;align-items:center;gap:0.45rem;
-    padding:0.8rem 1.2rem;border-radius:999px;
-    font-size:0.85rem;font-weight:700;
-    border:1px solid var(--accent);color:var(--ink);
-    transition:background 0.2s ease, transform 0.2s ease;
+  .skill-row{margin-bottom:0.85rem;}
+  .skill-label{
+    display:flex;justify-content:space-between;
+    font-size:0.8rem;margin-bottom:0.3rem;color:var(--ink);
   }
-  .btn-final:hover{
-    background:var(--accent-soft);transform:translateY(-2px);
+  .skill-track{
+    height:6px;border-radius:4px;background:rgba(255,255,255,0.08);overflow:hidden;
   }
-  .btn-final i{font-size:0.8rem;}
+  .skill-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),#7fd0ff);}
+
+  /* MAIN */
+  .section{margin-bottom:3.2rem;}
+  .section h2{
+    font-size:1.4rem;font-weight:700;margin-bottom:1rem;
+    display:flex;align-items:center;gap:0.6rem;
+  }
+  .section h2 i{color:var(--accent);font-size:1.1rem;}
+  .lede{font-size:0.95rem;line-height:1.75;color:var(--ink-dim);max-width:65ch;}
+
+  .project-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;margin-top:1.2rem;
+  }
+  .project-block{
+    border-radius:var(--radius);
+    padding:1.4rem;height:150px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    font-weight:700;font-size:0.95rem;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  }
+  .project-block span{font-size:0.75rem;font-weight:500;opacity:0.85;display:block;margin-top:0.2rem;}
+  .block-red{background:linear-gradient(140deg,var(--red),#a83224);}
+  .block-yellow{background:linear-gradient(140deg,var(--yellow),#b3811f);}
+  .block-blue{background:linear-gradient(140deg,var(--blue),#1f5c8f);}
+
+  .course-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:0.9rem;margin-top:1.2rem;
+  }
+  .course-item{
+    display:flex;align-items:flex-start;gap:0.7rem;
+    padding:0.9rem 1rem;
+    border-radius:var(--radius);
+    background:var(--bg-light);
+    border:1px solid rgba(63,169,255,0.15);
+  }
+  .course-item i{color:var(--accent);margin-top:0.2rem;font-size:0.85rem;}
+  .course-item h4{font-size:0.88rem;font-weight:600;line-height:1.4;}
+  .course-item h4 span{display:block;font-size:0.75rem;font-weight:400;color:var(--ink-dim);margin-top:0.15rem;}
+
+  .timeline{border-left:2px solid rgba(63,169,255,0.3);padding-left:1.4rem;}
+  .job{margin-bottom:1.6rem;position:relative;}
+  .job::before{
+    content:"";position:absolute;left:-1.53rem;top:0.35rem;
+    width:9px;height:9px;border-radius:50%;background:var(--accent);
+  }
+  .job h4{font-size:1rem;font-weight:700;}
+  .job .period{font-size:0.75rem;color:var(--ink-dim);margin-bottom:0.35rem;}
+  .job p{font-size:0.85rem;color:var(--ink-dim);line-height:1.6;max-width:60ch;}
 
   footer{
     text-align:center;padding:1.6rem 2rem 2rem;
     font-size:0.75rem;color:var(--ink-dim);
     border-top:1px solid rgba(255,255,255,0.06);
+  }
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;}
+    .nav-inner{flex-wrap:wrap;justify-content:center;gap:1rem;padding:0.8rem 1rem;}
   }
 </style>
 </head>
@@ -202,10 +215,10 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-link" href="index.html#home">HOME</a>
-    <a class="nav-link" href="index.html#experiencia">EXPERIÊNCIA</a>
-    <a class="nav-link" href="index.html#sobre">SOBRE MIM</a>
-    <a class="nav-link active" href="projetos.html">PROJETOS</a>
+    <a class="nav-link" href="#home">HOME</a>
+    <a class="nav-link" href="#experiencia">EXPERIÊNCIA</a>
+    <a class="nav-link" href="#sobre">SOBRE MIM</a>
+    <a class="nav-link" href="projetos.html">PROJETOS</a>
     <div class="nav-contact">
       <a class="nav-pill" href="https://wa.me/5592933003194" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
       <a class="nav-pill" href="https://www.linkedin.com/in/jean-silva-9a7552168/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -213,96 +226,106 @@
   </div>
 </nav>
 
-<div class="page" id="top">
-  <h1>Projetos</h1>
-  <p>Estes são os dashboards que desenvolvi para acompanhar estoque, logística e vendas. Meus projetos usam dados fictícios para fins de estudo e portfólio.</p>
+<div class="page" id="home">
 
-  <div class="grid">
-    <!-- Card 1 -->
-    <div class="card">
-      <div class="card-thumb" onclick="abrirModal('Dashboard.png')" title="Clique para ampliar a imagem">
-        <img src="Dashboard.png" alt="Dashboard de Vendas & Faturamento">
+  <aside>
+    <div class="avatar"><img src="jean.jpg" alt="Jean Silva"></div>
+    <div class="side-name">Jean Silva</div>
+    <div class="side-role">Analista de Dados<br>Estoque &amp; Logística</div>
+    <p class="side-bio">Transformo dados de estoque e operações logísticas em painéis e decisões mais rápidas.</p>
+
+    <a class="projects-btn" href="./projetos.html">
+      <i class="fa-solid fa-rocket"></i> PROJETOS
+    </a>
+
+    <div class="skills">
+      <h3>Habilidades</h3>
+      <div class="skill-row">
+        <div class="skill-label"><span>Power BI</span><span>70%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
       </div>
-      <div class="card-body">
-        <h3>Dashboard de Vendas & Faturamento</h3>
-        <p>Painel com visão consolidada de vendas por período, categoria e canal, usado para acompanhar metas mensais. Indicadores de faturamento, pedidos e lucro por cidade e vendedor.</p>
-        <p><small>Foi feito com Power BI e SQL.</small></p>
-        <p><small>Foi feito com dados aleatórios.</small></p>
-        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
-        <div class="card-actions">
-          <button class="btn-action" onclick="abrirModal('Dashboard.png')"><i class="fa-solid fa-expand"></i> Ampliar</button>
-          <a class="btn-action" href="Dashboard.png" download="Dashboard_Vendas_Faturamento.png"><i class="fa-solid fa-download"></i> Baixar Imagem</a>
+      <div class="skill-row">
+        <div class="skill-label"><span>Excel</span><span>65%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>SQL</span><span>60%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>Logística</span><span>90%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="section">
+      <h2><i class="fa-solid fa-briefcase"></i> Portfólio</h2>
+      <p class="lede">Olá! Sou o Jean, analista de dados focado em estoque e logística. Este espaço reúne um resumo da minha trajetória, os projetos em que venho trabalhando e as ferramentas que uso no dia a dia para tornar operações mais eficientes.</p>
+    </section>
+
+    <section class="section" id="destaque">
+      <h2><i class="fa-solid fa-chart-column"></i> Projetos em Destaque</h2>
+      <div class="project-grid">
+        <div class="project-block block-red">Controle de Estoque<span>Dashboard de giro e ruptura</span></div>
+        <div class="project-block block-yellow">Indicadores Logísticos<span>KPIs de entrega e prazo</span></div>
+        <div class="project-block block-blue">Análise de Vendas<span>Visão consolidada por período</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <h2><i class="fa-solid fa-list-check"></i> Experiência Profissional</h2>
+      <div class="timeline">
+        <div class="job">
+          <h4>Yusen Logistics</h4>
+          <div class="period">Estoque &amp; Logística</div>
+          <p>Acompanhamento de indicadores de estoque e apoio na organização dos fluxos logísticos do armazém.</p>
+        </div>
+        <div class="job">
+          <h4>MIR</h4>
+          <div class="period">Estoque &amp; Logística</div>
+          <p>Controle de entradas e saídas, conferência de inventário e suporte às rotinas de distribuição.</p>
+        </div>
+        <div class="job">
+          <h4>Cal-Comp</h4>
+          <div class="period">Estoque &amp; Logística</div>
+          <p>Apoio operacional em processos de estoque, com foco em organização e precisão dos dados registrados.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Card 2 -->
-    <div class="card">
-      <div class="card-thumb">
-        <i class="fa-solid fa-hourglass-half"></i>
-        <p style="font-size:0.8rem;color:var(--ink-dim);margin-top:0.4rem;">Em breve</p>
+    <section class="section" id="cursos">
+      <h2><i class="fa-solid fa-graduation-cap"></i> Cursos e Certificações</h2>
+      <div class="course-grid">
+        <div class="course-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Análise de Dados em SQL</h4>
+        </div>
+        <div class="course-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Power BI Avançado</h4>
+        </div>
+        <div class="course-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Excel Avançado e Tabela Dinâmica</h4>
+        </div>
+        <div class="course-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Bacharelado em Ciência de Dados<span>Estácio — cursando</span></h4>
+        </div>
       </div>
-      <div class="card-body">
-        <h3>Análise de Giro de Estoque</h3>
-        <p>Painel de giro de estoque, ruptura e itens em excesso, com filtros por depósito e categoria de produto.</p>
-        <p><small>Foi feito com Power BI e SQL.</small></p>
-        <p><small>Foi feito com dados aleatórios.</small></p>
-        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
-      </div>
-    </div>
+    </section>
 
-    <!-- Card 3 -->
-    <div class="card">
-      <div class="card-thumb">
-        <i class="fa-solid fa-hourglass-half"></i>
-        <p style="font-size:0.8rem;color:var(--ink-dim);margin-top:0.4rem;">Em breve</p>
-      </div>
-      <div class="card-body">
-        <h3>Controle Logístico & Entregas</h3>
-        <p>Indicadores de prazo de entrega, ocorrências e desempenho por transportadora.</p>
-        <p><small>Foi feito com Power BI e SQL.</small></p>
-        <p><small>Foi feito com dados aleatórios.</small></p>
-        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
-      </div>
-    </div>
-  </div>
+    <section class="section" id="sobre">
+      <h2><i class="fa-solid fa-user"></i> Sobre Mim</h2>
+      <p class="lede">Gosto de traduzir números em decisões práticas. Estou sempre estudando Power BI, Excel avançado e SQL para melhorar a forma como analiso e apresento dados de estoque e logística.</p>
+    </section>
+  </main>
 
-  <!-- Botões no final -->
-  <div class="btn-group-final">
-    <a class="btn-final" href="#top"><i class="fa-solid fa-arrow-up"></i> Subir</a>
-    <a class="btn-final" href="index.html"><i class="fa-solid fa-house"></i> Voltar à Página Inicial</a>
-  </div>
-</div>
-
-<!-- Modal para Ampliar Imagem -->
-<div class="modal-overlay" id="imageModal" onclick="fecharModal(event)">
-  <div class="modal-container">
-    <button class="modal-close" onclick="fecharModalFora()" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
-    <img class="modal-img" id="modalImg" src="" alt="Imagem Ampliada">
-  </div>
 </div>
 
 <footer>© 2026 Jean Silva. Todos os direitos reservados.</footer>
-
-<script>
-  function abrirModal(src) {
-    const modal = document.getElementById('imageModal');
-    const img = document.getElementById('modalImg');
-    img.src = src;
-    modal.classList.add('active');
-  }
-
-  function fecharModal(event) {
-    if (event.target.id === 'imageModal') {
-      document.getElementById('imageModal').classList.remove('active');
-    }
-  }
-
-  function fecharModalFora() {
-    document.getElementById('imageModal').classList.remove('update', 'active');
-    document.getElementById('imageModal').classList.remove('active');
-  }
-</script>
 
 </body>
 </html>
