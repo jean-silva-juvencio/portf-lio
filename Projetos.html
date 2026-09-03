@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projetos — Jean Silva</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg-deep:#020e1f;
+    --bg-mid:#0a2540;
+    --bg-light:#12324f;
+    --ink:#eaf2fb;
+    --ink-dim:#9fb3c8;
+    --accent:#3fa9ff;
+    --accent-soft:rgba(63,169,255,0.15);
+    --radius:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+  body{
+    background:linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,#173f63 100%);
+    color:var(--ink);min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  nav{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    background:rgba(2,14,31,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(63,169,255,0.15);
+  }
+  .nav-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;align-items:center;justify-content:flex-end;
+    gap:2rem;padding:0.9rem 2rem;
+  }
+  .nav-link{
+    font-size:0.85rem;font-weight:600;letter-spacing:0.02em;
+    color:var(--ink-dim);padding:0.4rem 0;
+    border-bottom:2px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-link:hover{color:var(--ink);border-color:var(--accent);}
+  .nav-link.active{color:var(--ink);border-color:var(--accent);}
+  .nav-contact{display:flex;gap:0.6rem;}
+  .nav-pill{
+    display:flex;align-items:center;gap:0.45rem;
+    padding:0.45rem 0.9rem;border-radius:999px;
+    font-size:0.8rem;font-weight:600;
+    border:1px solid rgba(63,169,255,0.35);color:var(--ink);
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .nav-pill:hover{background:var(--accent-soft);transform:translateY(-1px);}
+
+  .page{max-width:1180px;margin:0 auto;padding:7rem 2rem 3rem;}
+  .page h1{font-size:1.8rem;font-weight:700;margin-bottom:0.6rem;}
+  .page > p{font-size:0.95rem;color:var(--ink-dim);max-width:65ch;margin-bottom:2.4rem;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.6rem;
+  }
+  .card{
+    background:var(--bg-light);
+    border:1px solid rgba(63,169,255,0.18);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .card-thumb{
+    height:170px;
+    background:linear-gradient(135deg,#1a3f61,#0f2740);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-dim);font-size:2rem;
+  }
+  .card-thumb img{
+    width:100%;height:100%;object-fit:cover;
+    border-radius:8px;
+  }
+  .card-body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column;}
+  .card-body h3{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+  .card-body p{font-size:0.85rem;color:var(--ink-dim);line-height:1.6;flex:1;margin-bottom:1rem;}
+  .card-body p small{font-size:0.75rem;color:var(--ink-dim);display:block;margin-top:0.5rem;}
+  .card-link{
+    align-self:flex-start;
+    font-size:0.8rem;font-weight:700;color:var(--accent);
+    display:flex;align-items:center;gap:0.4rem;
+  }
+  .card-link i{font-size:0.75rem;}
+
+  /* Botões no final */
+  .btn-group-final{
+    display:flex;align-items:center;justify-content:center;
+    gap:2rem;margin-top:2.4rem;padding:0 2rem;
+  }
+  .btn-final{
+    display:flex;align-items:center;gap:0.45rem;
+    padding:0.8rem 1.2rem;border-radius:999px;
+    font-size:0.85rem;font-weight:700;
+    border:1px solid var(--accent);color:var(--ink);
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-final:hover{
+    background:var(--accent-soft);transform:translateY(-2px);
+  }
+  .btn-final i{font-size:0.8rem;}
+
+  footer{
+    text-align:center;padding:1.6rem 2rem 2rem;
+    font-size:0.75rem;color:var(--ink-dim);
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-link" href="index.html#home">HOME</a>
+    <a class="nav-link" href="index.html#experiencia">EXPERIÊNCIA</a>
+    <a class="nav-link" href="index.html#sobre">SOBRE MIM</a>
+    <a class="nav-link active" href="projetos.html">PROJETOS</a>
+    <div class="nav-contact">
+      <a class="nav-pill" href="https://wa.me/5592933003194" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a class="nav-pill" href="https://www.linkedin.com/in/jean-silva-9a7552168/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <h1>Projetos</h1>
+  <p>Estes são os dashboards que desenvolvi para acompanhar estoque, logística e vendas. Meus projetos usam dados fictícios para fins de estudo e portfólio.</p>
+
+  <div class="grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-thumb">
+        <img src="projeto1.png" alt="Dashboard de Vendas & Faturamento">
+      </div>
+      <div class="card-body">
+        <h3>Dashboard de Vendas & Faturamento</h3>
+        <p>Painel com visão consolidada de vendas por período, categoria e canal, usado para acompanhar metas mensais. Indicadores de faturamento, pedidos e lucro por cidade e vendedor.</p>
+        <p><small>Foi feito com Power BI e SQL.</small></p>
+        <p><small>Foi feito com dados aleatórios.</small></p>
+        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-thumb">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <p style="font-size:0.8rem;color:var(--ink-dim);margin-top:0.4rem;">Em breve</p>
+      </div>
+      <div class="card-body">
+        <h3>Análise de Giro de Estoque</h3>
+        <p>Painel de giro de estoque, ruptura e itens em excesso, com filtros por depósito e categoria de produto.</p>
+        <p><small>Foi feito com Power BI e SQL.</small></p>
+        <p><small>Foi feito com dados aleatórios.</small></p>
+        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-thumb">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <p style="font-size:0.8rem;color:var(--ink-dim);margin-top:0.4rem;">Em breve</p>
+      </div>
+      <div class="card-body">
+        <h3>Controle Logístico & Entregas</h3>
+        <p>Indicadores de prazo de entrega, ocorrências e desempenho por transportadora.</p>
+        <p><small>Foi feito com Power BI e SQL.</small></p>
+        <p><small>Foi feito com dados aleatórios.</small></p>
+        <p><small>Esse projeto foi feito com dados fictícios.</small></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botões no final -->
+  <div class="btn-group-final">
+    <a class="btn-final" href="#top"><i class="fa-solid fa-arrow-up"></i> Subir</a>
+    <a class="btn-final" href="index.html"><i class="fa-solid fa-house"></i> Voltar à Página Inicial</a>
+  </div>
+</div>
+
+<footer>© 2026 Jean Silva. Todos os direitos reservados.</footer>
+
+</body>
+</html>
