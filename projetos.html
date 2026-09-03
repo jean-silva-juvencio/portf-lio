@@ -68,22 +68,53 @@
     border-radius:var(--radius);
     overflow:hidden;
     display:flex;flex-direction:column;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(63,169,255,0.4);
   }
   .card-thumb{
     height:170px;
     background:linear-gradient(135deg,#1a3f61,#0f2740);
     display:flex;align-items:center;justify-content:center;
     color:var(--ink-dim);font-size:2rem;
+    position:relative;
+    cursor:pointer;
   }
   .card-thumb img{
     width:100%;height:100%;object-fit:cover;
     border-radius:8px;
+    transition:opacity 0.2s ease;
+  }
+  .card-thumb:hover::after{
+    content:"\f065";
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+    position:absolute;
+    inset:0;
+    background:rgba(2,14,31,0.5);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);
+    font-size:1.5rem;
   }
   .card-body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column;}
   .card-body h3{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
   .card-body p{font-size:0.85rem;color:var(--ink-dim);line-height:1.6;flex:1;margin-bottom:1rem;}
   .card-body p small{font-size:0.75rem;color:var(--ink-dim);display:block;margin-top:0.5rem;}
   
+  .card-actions{
+    display:flex;gap:0.6rem;margin-top:0.5rem;
+  }
+  .btn-action{
+    flex:1;text-align:center;padding:0.5rem;border-radius:6px;
+    font-size:0.75rem;font-weight:600;
+    border:1px solid rgba(63,169,255,0.3);
+    color:var(--ink);background:rgba(63,169,255,0.05);
+    transition:background 0.2s ease;
+  }
+  .btn-action:hover{background:var(--accent-soft);}
+
   /* Botões no final */
   .btn-group-final{
     display:flex;align-items:center;justify-content:center;
@@ -123,14 +154,14 @@
   </div>
 </nav>
 
-<div class="page">
+<div class="page" id="top">
   <h1>Projetos</h1>
   <p>Estes são os dashboards que desenvolvi para acompanhar estoque, logística e vendas. Meus projetos usam dados fictícios para fins de estudo e portfólio.</p>
 
   <div class="grid">
     <!-- Card 1 -->
     <div class="card">
-      <div class="card-thumb">
+      <div class="card-thumb" onclick="window.open('Dashboard.png', '_blank')" title="Clique para ampliar a imagem">
         <img src="Dashboard.png" alt="Dashboard de Vendas & Faturamento">
       </div>
       <div class="card-body">
@@ -139,6 +170,10 @@
         <p><small>Foi feito com Power BI e SQL.</small></p>
         <p><small>Foi feito com dados aleatórios.</small></p>
         <p><small>Esse projeto foi feito com dados fictícios.</small></p>
+        <div class="card-actions">
+          <a class="btn-action" href="Dashboard.png" target="_blank"><i class="fa-solid fa-expand"></i> Ampliar</a>
+          <a class="btn-action" href="Dashboard.png" download="Dashboard_Vendas_Faturamento.png"><i class="fa-solid fa-download"></i> Baixar Imagem</a>
+        </div>
       </div>
     </div>
 
